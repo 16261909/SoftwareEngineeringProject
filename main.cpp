@@ -2,7 +2,7 @@
 
 #include <QApplication>
 
-
+#include "file.h"
 
 class File
 {
@@ -38,5 +38,7 @@ int main(int argc, char *argv[])
 //    MainWindow w;
 //    w.show();
 //    return a.exec();
-
+    vector<string> v;
+    search("/home/stevenzhang/Desktop/files", v);
+    for(auto u:v)cout << u <<endl;
 }

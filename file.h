@@ -2,6 +2,8 @@
 #define FILE_H
 
 #include <QMainWindow>
+#include <string>
+#include <vector>
 #include <fstream>          //copy
 #include <iostream>         //console
 #include <dirent.h>         //search file
@@ -25,7 +27,7 @@ void copy(char* from, char* to)
     if(!ifs.is_open() || !ofs.is_open())
     {
         cout << "Fail to open." <<endl;
-        return 0;
+        return;
     }
     char* ch = new char[BuffSize];
     if(ch == NULL)
@@ -33,7 +35,7 @@ void copy(char* from, char* to)
         cout << "Fail to allocate" << endl;
         ifs.close();
         ofs.close();
-        return 0;
+        return;
     }
     while(!ifs.eof())
     {
@@ -43,11 +45,20 @@ void copy(char* from, char* to)
     delete[] ch;
     ifs.close();
     ofs.close();
+    return;
 }
 
-void search(char* path)
+void search(char* path, vector<string> &v)
 {
-
+    DIR *dirp;
+    dirent *dp;
+    dirp = opendir(path);
+    while((dp = readdir(dirp)) != NULL)
+    {
+        v.push_back(string(dp->d_name));
+    }
+    closedir(dirp);
+    return;
 }
 
 #endif // FILE_H
