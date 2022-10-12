@@ -10,7 +10,7 @@ int main(int argc, char *argv[])
 //    MainWindow w;
 //    w.show();
 //    return a.exec();
-    vector<string> v;
     char path[] = "/home/stevenzhang/Desktop/files";
-    Search(path, v);
+    printf("!");
+    Search(path);
 }
